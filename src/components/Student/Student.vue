@@ -16,14 +16,14 @@
       <div v-for="(students,clazz) in groupedStudents">
         <h3>{{clazz}}</h3>
         <table v-for="s in students">
-          <tr>
+          <tr :class="{alert:s.score<3}">
             <td width="25%">{{s.name}}</td>
             <td width="10%">{{s.age}}</td>
             <td width="30%">
               <button @click="scoreMinus(s)">-</button>
               <input type="text" class="score"
                      v-model="s.score"
-                     @keyup.enter="scoreChange(s,`上课次数更新为${s.score}次`)">
+                     @keyup.enter="scoreChange(s,`课时更新为${s.score}次`)">
               <button @click="scoreAdd(s)">+</button>
             </td>
             <td width="35%">
@@ -128,5 +128,9 @@
   .score {
     width: 35px;
     text-align: center;
+  }
+
+  .alert{
+    background-color: indianred;
   }
 </style>

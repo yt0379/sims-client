@@ -18,6 +18,7 @@
 
 <script>
   import Axios from 'axios';
+  import moment from 'moment';
 
   export default {
     name:'ScoreHistory',
@@ -42,7 +43,7 @@
         this.$router.push({name:'student'});
       },
       createdAt(timeStr){
-        return timeStr.substr(0,10)+' '+timeStr.substring(11,19)
+        return moment(timeStr).format('YYYY-MM-DD HH:mm:ss')
       }
     }
   }
